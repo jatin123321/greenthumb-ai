@@ -1,6 +1,7 @@
 import './globals.css';
 import Link from 'next/link';
 import AuthProvider from '@/components/AuthProvider';
+import LogoutButton from '@/components/LogoutButton';
 import { getServerSession } from 'next-auth';
 import { authOptions } from './api/auth/[...nextauth]/route';
 
@@ -39,7 +40,7 @@ const NavBar = async () => {
         {session ? (
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: '1rem', borderLeft: '1px solid var(--surface-border)', paddingLeft: '1rem' }}>
             <img src={session.user.image} alt={session.user.name} style={{ width: '32px', height: '32px', borderRadius: '50%' }} />
-            <Link href="/api/auth/signout" className="nav-link" style={{ fontSize: '0.9rem' }}>Logout</Link>
+            <LogoutButton />
           </div>
         ) : (
           <div style={{ marginLeft: '1rem', borderLeft: '1px solid var(--surface-border)', paddingLeft: '1rem' }}>
